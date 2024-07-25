@@ -7,7 +7,8 @@ from sqlalchemy.orm import selectinload
 
 from assessment.models import MedicationRequest
 from assessment.models.medication_request import StatusEnum
-from assessment.schemas.medication_request_schema import MedicationRequestSchema, MedicationRequestResponseSchema
+from assessment.schemas.medication_request_schema import MedicationRequestSchema, MedicationRequestResponseSchema, \
+    MedicationRequestPatchSchema
 from assessment.services.base.base_service import BaseService
 
 
@@ -55,3 +56,12 @@ class MedicationRequestService(BaseService):
         else:
             # Returning empty list, for consistency so we don't raise an exception.
             return list()
+
+    async def patch_medication_request(self,
+                                       session: AsyncSession,
+                                       medication_request_id: int,
+                                       medication_request_update: MedicationRequestPatchSchema):
+        await self.update(session=session,
+                          model=MedicationRequest,
+                          data={**medication_request_update.model_dump(exclude_none=True)},
+                          filters=[MedicationRequest.id == medication_request_id])

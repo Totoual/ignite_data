@@ -29,6 +29,7 @@ class MedicationRequest(Base):
     reason: Mapped[str]
     prescribed_date: Mapped[DateTime] = mapped_column(DateTime(timezone=True), default=func.now(), nullable=False)
     end_date: Mapped[DateTime] = mapped_column(DateTime(timezone=True), nullable=True)
+    frequency: Mapped[int]
     status: Mapped[StatusEnum]
 
     # Relationships:

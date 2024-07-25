@@ -18,11 +18,16 @@ class MedicationRequestSchema(BaseModel):
     reason: constr(min_length=1)
     prescribed_date: datetime = Field(default_factory=datetime.utcnow)
     end_date: Optional[datetime] = None
+    frequency: int
     status: StatusEnum
 
 
 class MedicationRequestResponseSchema(MedicationRequestSchema):
-    ...
     clinician: ClinicianBaseSchema
     medication: MedicationBaseSchema
 
+
+class MedicationRequestPatchSchema(BaseModel):
+    frequency: Optional[int] = None
+    end_date: Optional[datetime] = None
+    status: Optional[StatusEnum] = None
