@@ -26,4 +26,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-api = "src.assessment.main:main"
+api = "assessment.main:main"

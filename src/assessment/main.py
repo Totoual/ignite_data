@@ -9,6 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from assessment.config.fastapi import FastApiConfig
 from assessment.models.sessionmaker import sessionmanager
+from assessment.routes import medication_request
 
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
@@ -44,7 +45,7 @@ def init_app():
 
 
 def configure_routes(app: FastAPI):
-    ...
+    app.include_router(medication_request.router, tags=["Medication Request"])
 
 
 def main():
