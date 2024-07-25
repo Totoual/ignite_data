@@ -1,7 +1,7 @@
 from enum import Enum
 
 from sqlalchemy import ForeignKey, UUID, DateTime, func
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from assessment.models.model_base import Base
 
 
@@ -30,3 +30,8 @@ class MedicationRequest(Base):
     prescribed_date: Mapped[DateTime] = mapped_column(DateTime(timezone=True), default=func.now(), nullable=False)
     end_date: Mapped[DateTime] = mapped_column(DateTime(timezone=True), nullable=True)
     status: Mapped[StatusEnum]
+
+    # Relationships:
+
+    clinician: Mapped["Clinician"] = relationship(lazy="select")
+    medication: Mapped["Medication"] = relationship(lazy="select")  # noqa

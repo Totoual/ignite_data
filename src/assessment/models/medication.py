@@ -21,6 +21,7 @@ class Medication(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     code: Mapped[str] = mapped_column(String(30))
+    code_name: Mapped[str] = mapped_column(String(30))
     code_system: Mapped[str] = mapped_column(String(30))
     strength_value: Mapped[float]
     strength_unit: Mapped[str] = mapped_column(String(30))

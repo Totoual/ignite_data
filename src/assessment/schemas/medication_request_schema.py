@@ -4,6 +4,8 @@ from uuid import UUID
 from datetime import datetime
 
 from assessment.models.medication_request import StatusEnum
+from assessment.schemas.clinician_schema import ClinicianBaseSchema
+from assessment.schemas.medication_schema import MedicationBaseSchema
 
 
 class MedicationRequestSchema(BaseModel):
@@ -16,8 +18,8 @@ class MedicationRequestSchema(BaseModel):
     end_date: Optional[datetime] = None
 
 
-class MedicationRequestFilteredSchema(BaseModel):
-    status: Optional[StatusEnum] = None
-    start_date: Optional[datetime] = None
-    end_date: Optional[datetime] = None
+class MedicationRequestResponseSchema(MedicationRequestSchema):
+    status: str
+    clinician: ClinicianBaseSchema
+    code_name: MedicationBaseSchema
 
