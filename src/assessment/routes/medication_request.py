@@ -31,7 +31,7 @@ async def create_medication_request(
 
 @router.get("/medications-request",
             response_model_exclude_none=True,
-            response_model=List[MedicationRequestResponseSchema])
+            response_model=List[MedicationRequestResponseSchema] | list)
 async def get_filtered_medication(
         status: Optional[StatusEnum] = fastapi.Query(None),
         start_date: Optional[datetime] = fastapi.Query(None),
