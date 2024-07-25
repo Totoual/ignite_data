@@ -3,6 +3,8 @@ from typing import Optional
 from uuid import UUID
 from datetime import datetime
 
+from assessment.models.medication_request import StatusEnum
+
 
 class MedicationRequestSchema(BaseModel):
     """Pydantic model for MedicationRequest"""
@@ -11,5 +13,11 @@ class MedicationRequestSchema(BaseModel):
     medication_id: int
     reason: constr(min_length=1)
     prescribed_date: datetime
+    end_date: Optional[datetime] = None
+
+
+class MedicationRequestFilteredSchema(BaseModel):
+    status: Optional[StatusEnum] = None
+    start_date: Optional[datetime] = None
     end_date: Optional[datetime] = None
 
