@@ -1,0 +1,8 @@
+default:
+  log_level: info
+  test: false
+  db_port: 5432
+  db_name: postgres
+  db_user: postgres
+  db_password: postgres
+  db_pool_recycle: 300

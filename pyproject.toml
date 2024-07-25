@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ignite-data-assessment"
+name = "assessment"
 version = "0.1.0"
 description = ""
 authors = ["Totoual <aristotelis@h2gopower.com>"]
@@ -12,6 +12,8 @@ sqlalchemy = "^2.0.31"
 aiosqlite = "^0.20.0"
 asyncpg = "^0.29.0"
 uvicorn = {extras = ["standard"], version = "^0.30.3"}
+dynaconf = "^3.2.6"
+greenlet = "^3.0.3"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -21,3 +23,6 @@ black = "^24.4.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+api = "src.assessment.main:main"
