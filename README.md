@@ -47,6 +47,22 @@ Ensure you have the following installed:
 
     You can update the env variables or overwritte them in config folder.
 
+## Run docker compose
+
+1. ** Run docker-compose**:
+    
+    ```bash
+    cd docker/
+    docker-compose up -d
+    ```
+   This will create spin up a postgresql container and a pgamdin4 container.
+
+## Run Alembic
+
+1. ** Setup DB**:
+   
+   You can follow the details on how to run alembic [here](/src/assessment/migrations/README.md)
+
 ## Usage
 
 1. **Run the API**:
@@ -55,7 +71,7 @@ Ensure you have the following installed:
     poetry run api
     ```
 
-2**API Documentation**:
+2. **API Documentation**:
 
     Access the interactive API documentation at `http://localhost:8000/docs`.
 
