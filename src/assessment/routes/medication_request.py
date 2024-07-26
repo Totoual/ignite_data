@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 router = fastapi.APIRouter()
 
 
-@router.post("/medications-request")
+@router.post("/medication-request")
 async def create_medication_request(
     medication_request: MedicationRequestSchema, session: AsyncSession = fastapi.Depends(get_db)
 ):
@@ -30,7 +30,7 @@ async def create_medication_request(
     await service.create_medication_request(session=session, medication_request=medication_request)
 
 
-@router.get("/medications-request",
+@router.get("/medication-request",
             response_model_exclude_none=True,
             response_model=List[MedicationRequestResponseSchema] | list)
 async def get_filtered_medication_request(
@@ -52,7 +52,7 @@ async def get_filtered_medication_request(
     return response
 
 
-@router.patch("/medications-request/{medication_request_id}")
+@router.patch("/medication-request/{medication_request_id}")
 async def update_medication_request(
     medication_request_id: int,
     medication_request_update: MedicationRequestPatchSchema,

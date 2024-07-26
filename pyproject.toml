@@ -15,11 +15,15 @@ uvicorn = {extras = ["standard"], version = "^0.30.3"}
 dynaconf = "^3.2.6"
 greenlet = "^3.0.3"
 alembic = "^1.13.2"
+coverage = "^7.6.0"
+pytest-cov = "^5.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.11.0"
 black = "^24.4.2"
+pytest = "^8.3.2"
+pytest-asyncio = "^0.23.8"
 
 [build-system]
 requires = ["poetry-core"]
@@ -27,3 +31,29 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 api = "assessment.main:main"
+
+[tool.coverage.html]
+directory = "cov_html"
+
+[tool.coverage.run]
+branch = true
+concurrency = ["greenlet"]
+source = ["src/assessment/", "src/tests/"]
+omit = [
+    ".*",
+    "*/site-packages/*",
+]
+
+[tool.coverage.report]
+fail_under = 60
+exclude_lines = [
+  "pragma: no cover",
+  "def __repr__",
+  "def __str__",
+  "raise AssertionError",
+  "raise NotImplementedError",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+  "if typing.TYPE_CHECKING:",
+  "pass"
+]
