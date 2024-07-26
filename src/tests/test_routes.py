@@ -12,8 +12,7 @@ from assessment.models import Clinician, Patient, MedicationRequest, Medication
 
 client = TestClient(app)
 
-#
-# # Test data
+
 test_clinician = Clinician(
     registration_id=str(uuid.uuid4()),
     first_name="John",
@@ -54,7 +53,6 @@ test_medication_patch_json = {
   "end_date": "2024-07-26T07:04:58.586Z",
   "status": "active"
 }
-
 
 
 @pytest.mark.asyncio
