@@ -9,6 +9,8 @@ This is an assessment.
   - [Installation](#installation)
   - [Usage](#usage)
   - [Running Linters](#running-linters)
+  - [Run docker compose](#run-docker-compose)
+  - [Run Alembic](#run-alembic)
   - [Running Tests](#running-tests)
   - [API Endpoints](#api-endpoints)
 
@@ -49,7 +51,7 @@ Ensure you have the following installed:
 
 ## Run docker compose
 
-1. ** Run docker-compose**:
+1. **Run docker-compose**:
     
     ```bash
     cd docker/
@@ -59,7 +61,7 @@ Ensure you have the following installed:
 
 ## Run Alembic
 
-1. ** Setup DB**:
+1. **Setup DB**:
    
    You can follow the details on how to run alembic [here](/src/assessment/migrations/README.md)
 
