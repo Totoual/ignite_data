@@ -10,6 +10,7 @@ from assessment.schemas.medication_schema import MedicationBaseSchema
 
 class MedicationRequestSchema(BaseModel):
     """Pydantic model for MedicationRequest"""
+
     model_config = ConfigDict(from_attributes=True)
 
     patience_id: UUID

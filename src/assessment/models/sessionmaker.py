@@ -1,7 +1,13 @@
 from contextlib import asynccontextmanager
 from typing import AsyncIterator, Union
 
-from sqlalchemy.ext.asyncio import AsyncConnection, AsyncEngine, AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy.ext.asyncio import (
+    AsyncConnection,
+    AsyncEngine,
+    AsyncSession,
+    async_sessionmaker,
+    create_async_engine,
+)
 
 from assessment.config import config
 from assessment.models.model_base import Base
@@ -22,7 +28,9 @@ class DatabaseSessionManager:
             max_overflow=max_overflow,
             pool_recycle=config.db_pool_recycle,
         )
-        self._sessionmaker = async_sessionmaker(autocommit=False, expire_on_commit=False, bind=self.engine)
+        self._sessionmaker = async_sessionmaker(
+            autocommit=False, expire_on_commit=False, bind=self.engine
+        )
 
     async def close(self):
         if self.engine is None:
@@ -58,7 +66,7 @@ class DatabaseSessionManager:
             await session.close()
 
     async def create_all(self, connection: AsyncConnection):
-        import assessment.models # noqa
+        import assessment.models  # noqa
 
         await connection.run_sync(Base.metadata.create_all)
 

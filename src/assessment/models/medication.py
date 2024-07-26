@@ -17,7 +17,8 @@ class Medication(Base):
     """
     Medication SQLAlchemy model.
     """
-    __tablename__ = 'medications'
+
+    __tablename__ = "medications"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     code: Mapped[str] = mapped_column(String(30))

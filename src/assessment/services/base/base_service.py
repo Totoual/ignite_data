@@ -15,7 +15,11 @@ class BaseService(ABC):
         pass
 
     async def select(
-        self, session: AsyncSession, model: Base, options: Optional[List] = None, filters: Optional[List] = None
+        self,
+        session: AsyncSession,
+        model: Base,
+        options: Optional[List] = None,
+        filters: Optional[List] = None,
     ):
         """
         Selects the data from the database.
@@ -40,15 +44,29 @@ class BaseService(ABC):
         return model
 
     async def update(
-        self, session: AsyncSession, model: Base, data: Union[List, Dict[str, Any]], filters: Optional[List] = None
+        self,
+        session: AsyncSession,
+        model: Base,
+        data: Union[List, Dict[str, Any]],
+        filters: Optional[List] = None,
     ) -> None:
         """Update the data in the database."""
         if filters is None:
             filters = []
 
         if isinstance(data, dict):
-            query = update(model).where(*filters).values(data).execution_options(synchronize_session="fetch")
+            query = (
+                update(model)
+                .where(*filters)
+                .values(data)
+                .execution_options(synchronize_session="fetch")
+            )
         else:
-            query = update(model).where(*filters).values(*data).execution_options(synchronize_session="fetch")
+            query = (
+                update(model)
+                .where(*filters)
+                .values(*data)
+                .execution_options(synchronize_session="fetch")
+            )
         await session.execute(query)
         await session.commit()

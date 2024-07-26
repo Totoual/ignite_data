@@ -16,7 +16,9 @@ REQUIRED_CONFIG = [
     "db_pool_recycle",
 ]
 
-config_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../config"))
+config_directory = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "../../../config")
+)
 
 # If not running in GKE, use `local.env` to override certain settings
 running_in_gke = os.environ.get("KUBERNETES_SERVICE_HOST") is not None

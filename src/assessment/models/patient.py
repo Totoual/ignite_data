@@ -14,6 +14,7 @@ class Patient(Base):
     """
     Patient SQLAlchemy model.
     """
+
     __tablename__ = "patients"
 
     id: Mapped[UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, index=True)
